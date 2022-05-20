@@ -1,4 +1,4 @@
-package newCode.blog.eCommerceFlatform;
+package eCommerceFlatform;
 
 import java.util.Scanner;
 

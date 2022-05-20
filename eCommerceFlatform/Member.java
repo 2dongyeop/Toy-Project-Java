@@ -1,4 +1,4 @@
-package newCode.blog.eCommerceFlatform;
+package eCommerceFlatform;
 
 public class Member {
     private String id;
