@@ -1,4 +1,4 @@
-package newCode.major.Dictionary;
+package Dictionary;
 
 public class Word {
     private String word;

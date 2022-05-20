@@ -1,4 +1,4 @@
-package newCode.major.Dictionary;
+package Dictionary;
 
 public class DictionaryLauncher {
     //자료 추가

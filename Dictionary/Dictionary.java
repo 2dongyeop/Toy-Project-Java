@@ -1,4 +1,4 @@
-package newCode.major.Dictionary;
+package Dictionary;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
