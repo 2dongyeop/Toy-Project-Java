@@ -3,10 +3,8 @@ package ThreadNumberGame;
 import java.util.*;
 
 public class GuessGame {
-    private boolean run = true;
     static Player player = new Player();
     private static final int SIZE = 3; //정답 수
-    Scanner scanner = new Scanner(System.in);
     static List<Integer> answerList = new ArrayList<>(3);
 
     public static void startGame() {
