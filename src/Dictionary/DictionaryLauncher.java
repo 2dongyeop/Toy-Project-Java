@@ -3,7 +3,6 @@ package Dictionary;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
@@ -38,22 +37,24 @@ class Dictionary {
 
              switch (menu) {
                 case 1:
-                    insertWord();
+                    insert();
                     break;
                 case 2:
-                    searchWord();
+                    search();
                     break;
                 case 3:
-                    deleteWord();
+                    delete();
                     break;
                 default:
-                    System.err.println("1 ~ 3 사이의 값을 입력해주세요.");
+                    System.err.println("단어사전 프로그램을 종료합니다.");
                     break;
             }
         } while (menu != 4);
+
+         bufferedReader.close();
     }
 
-    public void insertWord() throws IOException {
+    public void insert() throws IOException {
         System.out.println("단어와 단어의 뜻을 입력하세요.");
         String str = bufferedReader.readLine();
 
@@ -65,41 +66,42 @@ class Dictionary {
         System.out.println(wrdNote.size() - 1 + "번 인덱스에 자료를 추가합니다.");
     }
 
-    public void searchWord() throws IOException {
+    public void search() throws IOException {
         System.out.println("뜻을 검색할 단어를 입력해주세요");
         String tempWord = bufferedReader.readLine();
 
         boolean isSearched = false;
         for (int i = 0; i < wrdNote.size(); i++) {
-            if (tempWord == wrdNote.get(i).getWord()) {
+            if (wrdNote.get(i).getWord().equals(tempWord)) {
                 System.out.println(wrdNote.get(i).getMeaning());
                 isSearched = true;
+                break;
             }
         }
 
-        if (isSearched) {
+        if (!isSearched) {
             System.err.println("입력하신 단어를 찾을 수 없습니다.");
         }
     }
 
-    public void deleteWord() throws IOException {
+    public void delete() throws IOException {
         System.out.println("삭제할 단어를 입력해주세요");
         String tempWord = bufferedReader.readLine();
 
         boolean isSearched = false;
         for (int i = 0; i < wrdNote.size(); i++) {
-            if (tempWord == wrdNote.get(i).getWord()) {
+            if (wrdNote.get(i).getWord().equals(tempWord)) {
                 System.out.println("해당 단어를 삭제합니다.");
                 wrdNote.remove(i);
                 isSearched = true;
+                break;
             }
         }
 
-        if (isSearched) {
+        if (!isSearched) {
             System.err.println("입력하신 단어를 찾을 수 없습니다.");
         }
     }
-
 }
 
 public class DictionaryLauncher {
