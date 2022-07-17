@@ -16,7 +16,6 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         while (!is_exit) {
-            //프로그램이 시작되면 방송사를 선택해야 한다.
             selectStation();
 
             while (!station.equals("4")) {
@@ -33,6 +32,7 @@ public class Main {
     }
 
     private static final void selectStation() throws IOException {
+        //프로그램이 시작되면 방송사를 선택해야 한다.
         System.out.println("=================================");
         System.out.println("방송사 선택");
         System.out.println("1. KBS | 2. MBC | 3.SBS | 4.종료");
@@ -46,6 +46,7 @@ public class Main {
     }
 
     private static final void selectMenu() throws IOException {
+        //선택된 방송사에 대한 메뉴 출력
         System.out.println("=============================================================");
         System.out.println("1. 추가 | 2. 출력 | 3. 검색 | 4. 수정 | 5. 삭제 | 6. 이전으로");
         System.out.println("=============================================================");
@@ -56,6 +57,7 @@ public class Main {
     }
 
     private static final void addProgram() throws IOException {
+        // 방송에 대한 제목, 분야, 제작진, 방송하는 요일, 방송 시간 입력
         System.out.print("제목 : ");
         String title = br.readLine();
         System.out.print("분야 : ");
@@ -71,7 +73,8 @@ public class Main {
 
     }
 
-    private static final void printProgram() {  //전체 프로그램 정보 호출
+    private static final void printProgram() {
+        // 현재 추가된 전체 프로그램 정보 호출
         for (Program program : programs) {
             System.out.println("제목 : " + program.title);
             System.out.println("분야 : " + program.field);
@@ -83,7 +86,8 @@ public class Main {
         }
     }
 
-    private static final void printProgram(Program program) { //해당 프로글매 정보 호출
+    private static final void printProgram(Program program) {
+        //해당 프로그램 정보 호출
         System.out.println("제목 : " + program.title);
         System.out.println("분야 : " + program.field);
         System.out.println("제작진 : " + program.producer);
@@ -94,22 +98,25 @@ public class Main {
     }
 
     private static final void searchProgram() throws IOException {
+        //검색할 방송의 이름을 입력
         System.out.print("검색하실 방송 이름을 입력하세요 : ");
         final String title = br.readLine();
         System.out.println();
 
+        // 제목이 일치하는 프로그램이 있으면 해당 프로그램 정보 출력
         for (Program program : programs) {
             if (title.equals(program.title)) printProgram(program);
         }
     }
 
     private static final void updateProgram() throws IOException {
+        //방송 수정 메뉴
         index = 0; //초기화
         System.out.print("수정하실 방송 이름을 입력하세요 : ");
         final String title = br.readLine();
         System.out.println();
 
-        //수정할 방송 이름으로 검색된 프로글매 정보 출력
+        //프로그램명이 동일한 프로그램이 있으면 수정할 부분 입력
         for (Program program : programs) {
             if (title.equals(program.title)) {
                 printProgram(program);
@@ -149,15 +156,18 @@ public class Main {
     }
 
     private static final void deleteProgram() throws IOException {
+        //삭제 메뉴 선택
         index = 0; //초기화
         System.out.print("삭제하실 방송 이름을 입력하세요 : ");
         final String title = br.readLine();
         System.out.println();
 
+        //프로그램명이 일치하는게 있는지 확인
         for (Program program : programs) {
             if (title.equals(program.title)) {
+                //삭제하기 전 해당 프로그램 정보 출력
                 printProgram(program);
-                programs.remove(index);
+                programs.remove(index);  //지우기
 
                 System.out.println("삭제되었습니다.");
             }
